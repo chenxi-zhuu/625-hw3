@@ -1,3 +1,10 @@
+# Logistic Regression model
+
+<!-- badges: start -->
+  [![R-CMD-check](https://github.com/chenxi-zhuu/625-hw3/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/chenxi-zhuu/625-hw3/actions/workflows/R-CMD-check.yaml)
+[![Codecov test coverage](https://codecov.io/gh/chenxi-zhuu/625-hw3/graph/badge.svg)](https://app.codecov.io/gh/chenxi-zhuu/625-hw3)
+<!-- badges: end -->
+
 The goal of this R package is to build a logistic regression model `my_logistic_regression` based on the Newton algorithm to estimate coefficients, print `print.my_logistic_regression`, predict `preidtc.my_logistic_regression`, and draw ROC curves `plor_roc` based on the S3 method, and calculate the accuracy `accuracy` of the model based on C++.
 
 ## Installation
