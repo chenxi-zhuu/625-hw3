@@ -13,7 +13,7 @@ You can install the development version of `GLMhw` (Logisitic regression model) 
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("xinyozha/homework3")
+devtools::install_github("chenxi-zhuu/625-hw3")
 ```
 
 ## Loading packages
