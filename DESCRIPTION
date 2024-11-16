@@ -1,0 +1,22 @@
+Package: GLMhw
+Type: Package
+Title: Logistic Regression Model
+Version: 1.0
+Date: 2024-11-09
+Author: anonymous
+Maintainer: Chenxi Zhu <chenxz@umich.edu>
+Description: This R package customizes the logistic regression model and can draw the ROC curve.
+License: GPL-2
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.3.2
+LinkingTo: 
+    Rcpp
+Imports: 
+    Rcpp, bench
+Suggests: 
+    knitr,
+    rmarkdown,
+    testthat (>= 3.0.0)
+VignetteBuilder: knitr
+Config/testthat/edition: 3

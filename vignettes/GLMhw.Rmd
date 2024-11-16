@@ -1,0 +1,78 @@
+---
+title: "GLMhw-vignette"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{GLMhw-vignette}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(GLMhw)
+```
+
+# Introduction
+
+The R package `GLMhw` is used to build a logistic regression model and use the Newton algorithm for parameter estimation. The package implements model training (`my_logistic_regression.formula`), prediction (`predict.my_logistic_regression`), drawing ROC curves (`plot_roc`), and printing models (`print.my_logistic_regression`). The S3 method is used in the function definition.
+
+# Example
+## Build a logistic regression model
+```{r}
+data(test_data)
+model <- my_logistic_regression(y~x1+x2, data=test_data)
+# print model
+print(model)
+```
+
+## Prediction
+```{r}
+pred <- predict(model,test_data[1:10,])
+pred
+```
+
+## Draw ROC curve
+
+```{r}
+plot_roc(model)
+```
+
+## Compute accuracy
+```{r}
+accuracy(pred$prob,test_data$y[1:10])
+```
+
+# Correctness
+
+The logistic regression results of the `glm` function and this R package are consistent.
+```{r}
+model_true <- glm(y~x1+x2,data=test_data, family=binomial)
+summary(model_true)
+```
+
+The estimated coefficients are consistent.
+```{r}
+coef_true <- round(as.vector(coef(model_true)),5)
+coef_cur <- round(as.vector(t(coef(model))),5)
+all.equal(coef_true,coef_cur)
+```
+
+
+# Performance
+```{r}
+bench::mark(
+  min_time = .1,
+  {model_true <- glm(y~x1+x2,data=test_data, family=binomial)
+  round(as.vector(coef(model_true)),5)
+  },
+  {model <- my_logistic_regression(y~x1+x2, data=test_data)
+  round(as.vector(t(coef(model))),5)
+  }
+)
+```

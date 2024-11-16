@@ -1,0 +1,18 @@
+useDynLib(GLMhw, .registration=TRUE)
+
+importFrom("graphics", "abline", "text")
+importFrom("stats", "model.frame", "model.matrix", "model.response","glm")
+import(Rcpp)
+import(bench)
+
+export(my_logistic_regression)
+export(my_logistic_regression.formula)
+export(plot_roc)
+export(print.my_logistic_regression)
+export(predict.my_logistic_regression)
+export(accuracy)
+
+S3method(my_logistic_regression, formula)
+S3method(print,my_logistic_regression)
+S3method(predict,my_logistic_regression)
+
